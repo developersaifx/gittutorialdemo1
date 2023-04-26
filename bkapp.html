@@ -10,7 +10,8 @@
         <button>Submit</button>
 
     </form>
-    <ul id='listOfitems'></ul>
+    <ul id='listOfitems'>
+    </ul>
 <script>
     function saveToLocalStorage(event){
         event.preventDefault();
@@ -31,6 +32,16 @@ showUserOnScreen(obj)
 function showUserOnScreen(obj){
     const parentELem = document.getElementById('listOfitems')
     parentELem.innerHTML = parentELem.innerHTML + `<li> ${obj.name} - ${obj.email} - ${obj.phonenumber}</li>`
+
+    const deleteButton = document.createElement('input')
+    deleteButton.type="button"
+    deleteButton.value ='Delete'
+    deleteButton.onclick =() => {
+        localStorage.removeItem(obj.email)
+        parentELem.removeChild(childElem)
+    }
+    childElem.appendChild(deleteButton)
+    parentELem.appendChild(childElem)
 }
 </script>
 </body>
